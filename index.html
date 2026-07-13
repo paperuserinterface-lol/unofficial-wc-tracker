@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA World Cup 2026™ Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚽</span>
+                <span class="logo-text">FIFA World Cup 2026™</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link active" data-page="scores">Scores</a>
+                <a href="#" class="nav-link" data-page="bracket">Bracket & Groups</a>
+                <a href="#" class="nav-link" data-page="draft">Draft</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page: Scores -->
+    <div id="scores-page" class="page active">
+        <div class="container">
+            <div class="page-header">
+                <h1>Live Scores</h1>
+                <p class="subtitle">Track all FIFA World Cup 2026™ matches</p>
+            </div>
+            
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All</button>
+                <button class="filter-tab" data-filter="upcoming">Upcoming</button>
+                <button class="filter-tab" data-filter="live">Live</button>
+                <button class="filter-tab" data-filter="finished">Finished</button>
+            </div>
+
+            <div id="matches-container" class="matches-container">
+                <!-- Matches will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Page: Bracket & Groups -->
+    <div id="bracket-page" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Bracket & Groups</h1>
+                <p class="subtitle">Group tables and knockout stage</p>
+            </div>
+
+            <div class="bracket-tabs">
+                <button class="bracket-tab active" data-tab="groups">Groups</button>
+                <button class="bracket-tab" data-tab="knockout">Knockout</button>
+            </div>
+
+            <div id="groups-container" class="groups-container">
+                <!-- Groups will be loaded here -->
+            </div>
+
+            <div id="knockout-container" class="knockout-container" style="display: none;">
+                <!-- Knockout bracket will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Page: Draft -->
+    <div id="draft-page" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>FUT Draft</h1>
+                <p class="subtitle">Build your ultimate World Cup XI</p>
+            </div>
+
+            <div class="draft-controls">
+                <div class="formation-selector">
+                    <label>Formation:</label>
+                    <select id="formation-select">
+                        <option value="4-3-3">4-3-3</option>
+                        <option value="4-4-2">4-4-2</option>
+                        <option value="3-5-2">3-5-2</option>
+                        <option value="5-3-2">5-3-2</option>
+                        <option value="4-2-3-1">4-2-3-1</option>
+                    </select>
+                </div>
+                <div class="draft-actions">
+                    <button id="randomize-draft-btn" class="btn btn-secondary">Randomize</button>
+                    <button id="save-draft-btn" class="btn btn-primary">Save Draft</button>
+                    <button id="export-draft-txt-btn" class="btn btn-secondary">Export TXT</button>
+                    <button id="reset-draft-btn" class="btn btn-danger">Reset</button>
+                </div>
+            </div>
+
+            <div class="draft-stats">
+                <div class="stat-card">
+                    <div class="stat-label">Team Rating</div>
+                    <div class="stat-value" id="team-rating">85</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Chemistry</div>
+                    <div class="stat-value" id="team-chemistry">100</div>
+                </div>
+            </div>
+
+            <div class="pitch-container">
+                <div class="pitch">
+                    <div id="pitch-players" class="pitch-players">
+                        <!-- Player spots will be rendered here -->
+                    </div>
+                </div>
+                <div class="substitutes">
+                    <h3>Substitutes</h3>
+                    <div id="substitutes-container">
+                        <!-- Substitutes will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="draft-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2 id="modal-title">Choose Player</h2>
+                    <div id="player-options" class="player-options">
+                        <!-- Player options will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer / Disclaimer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>Disclaimer:</strong> This site is not affiliated, associated, authorized, endorsed by, or in any way officially connected with FIFA, or any of its subsidiaries or its affiliates. All product and company names are the registered trademarks of their original owners.</p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="scores.js"></script>
+    <script src="bracket.js"></script>
+    <script src="draft.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
