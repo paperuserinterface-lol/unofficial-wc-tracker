@@ -5,6 +5,7 @@ let draftTeam = {
     players: {},
     substitutes: []
 };
+const DRAFT_STORAGE_KEY = 'worldCupDraft';
 
 function getPlayersByPosition(position) {
     // Get players that match or are compatible with the position
@@ -257,11 +258,59 @@ function calculateStats() {
     document.getElementById('team-chemistry').textContent = '100';
 }
 
-function saveDraft() {
-    localStorage.setItem('worldCupDraft', JSON.stringify({
+function getDraftPayload() {
+    return {
         formation: currentFormation,
         team: draftTeam
-    }));
+    };
+}
+
+function saveDraftLocally() {
+    localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(getDraftPayload()));
+}
+
+async function saveDraftToServer() {
+    if (!currentUser) {
+        return false;
+    }
+
+    const response = await fetch('/api/drafts/latest', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(getDraftPayload())
+    });
+
+    const data = await readJsonResponse(response);
+    if (!response.ok || !data.success) {
+        throw new Error(data.message || 'Could not save your draft.');
+    }
+
+    return true;
+}
+
+function saveDraft(showFeedback = false) {
+    saveDraftLocally();
+
+    if (!currentUser) {
+        if (showFeedback) {
+            alert('Draft saved locally on this device. Log in to sync it to your account.');
+        }
+        return;
+    }
+
+    saveDraftToServer()
+        .then(() => {
+            if (showFeedback) {
+                alert('Draft saved to your account.');
+            }
+        })
+        .catch((error) => {
+            console.error('Draft save error:', error);
+            if (showFeedback) {
+                alert(error.message || 'Could not sync your draft, but it was saved locally.');
+            }
+        });
 }
 
 function generateDraftTxt() {
@@ -307,13 +356,74 @@ function exportDraftAsTxt() {
     URL.revokeObjectURL(url);
 }
 
-function loadDraft() {
-    const saved = localStorage.getItem('worldCupDraft');
-    if (saved) {
+function applyDraftData(data) {
+    if (!data || !data.formation || !data.team) {
+        return;
+    }
+
+    currentFormation = data.formation;
+    draftTeam = data.team;
+
+    const formationSelect = document.getElementById('formation-select');
+    if (formationSelect) {
+        formationSelect.value = currentFormation;
+    }
+}
+
+function loadLocalDraft() {
+    const saved = localStorage.getItem(DRAFT_STORAGE_KEY);
+    if (!saved) {
+        return false;
+    }
+
+    try {
         const data = JSON.parse(saved);
-        currentFormation = data.formation;
-        draftTeam = data.team;
-        document.getElementById('formation-select').value = currentFormation;
+        applyDraftData(data);
+        return true;
+    } catch (error) {
+        console.error('Local draft parse error:', error);
+        localStorage.removeItem(DRAFT_STORAGE_KEY);
+        return false;
+    }
+}
+
+async function loadDraftFromServer() {
+    if (!currentUser) {
+        return false;
+    }
+
+    try {
+        const response = await fetch('/api/drafts/latest', {
+            method: 'GET',
+            credentials: 'include',
+            cache: 'no-store'
+        });
+
+        const data = await readJsonResponse(response);
+
+        if (!response.ok || !data.success) {
+            throw new Error(data.message || 'Could not load your saved draft.');
+        }
+
+        if (!data.draft) {
+            return false;
+        }
+
+        applyDraftData(data.draft);
+        saveDraftLocally();
+        renderPitch();
+        return true;
+    } catch (error) {
+        console.error('Server draft load error:', error);
+        return false;
+    }
+}
+
+function loadDraft() {
+    loadLocalDraft();
+
+    if (currentUser) {
+        loadDraftFromServer();
     }
 }
 
@@ -355,8 +465,17 @@ function randomizeDraft() {
 function resetDraft() {
     if (confirm('Are you sure you want to reset your draft?')) {
         draftTeam = { players: {}, substitutes: [] };
-        localStorage.removeItem('worldCupDraft');
+        localStorage.removeItem(DRAFT_STORAGE_KEY);
         renderPitch();
+
+        if (currentUser) {
+            fetch('/api/drafts/latest', {
+                method: 'DELETE',
+                credentials: 'include'
+            }).catch((error) => {
+                console.error('Draft delete error:', error);
+            });
+        }
     }
 }
 
@@ -383,8 +502,7 @@ function initDraftPage() {
     
     // Save button
     document.getElementById('save-draft-btn').addEventListener('click', () => {
-        saveDraft();
-        alert('Draft saved!');
+        saveDraft(true);
     });
 
     // Export TXT button

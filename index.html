@@ -17,7 +17,13 @@
             <div class="nav-links">
                 <a href="#" class="nav-link active" data-page="scores">Scores</a>
                 <a href="#" class="nav-link" data-page="bracket">Bracket & Groups</a>
+                <a href="#" class="nav-link" data-page="moments">Moments</a>
+                <a href="#" class="nav-link" data-page="stats">Stats</a>
+                <a href="#" class="nav-link" data-page="forum">Forum</a>
                 <a href="#" class="nav-link" data-page="draft">Draft</a>
+                <a href="#" class="nav-link" data-page="profile" id="nav-profile-link" style="display: none;">Profile</a>
+                <a href="#" class="nav-link admin-nav-link" data-page="admin" id="nav-admin-link" style="display: none;">Admin Panel</a>
+                <a href="#" class="nav-link login-btn-nav" data-page="login" id="nav-login-link">Login</a>
             </div>
         </div>
     </nav>
@@ -62,6 +68,333 @@
 
             <div id="knockout-container" class="knockout-container" style="display: none;">
                 <!-- Knockout bracket will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Page: Moments -->
+    <div id="moments-page" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Moments</h1>
+                <p class="subtitle">A digital museum of football history's most unforgettable seconds</p>
+            </div>
+
+            <div class="moment-filter-tabs">
+                <button class="moment-tab active" data-moment-filter="all">All</button>
+                <button class="moment-tab" data-moment-filter="goal">Goals</button>
+                <button class="moment-tab" data-moment-filter="save">Saves</button>
+                <button class="moment-tab" data-moment-filter="emotion">Emotion</button>
+            </div>
+
+            <div id="moments-container" class="moments-container">
+                <!-- Moments will be loaded here -->
+            </div>
+        </div>
+
+        <div id="moment-game-modal" class="modal">
+            <div class="modal-content moment-game-content">
+                <span class="close-btn" id="moment-game-close">&times;</span>
+                <h2 id="moment-game-title">Recreate The Moment</h2>
+                <p id="moment-game-instructions" class="moment-game-instructions">Watch how it happened...</p>
+
+                <canvas id="moment-game-canvas" class="moment-game-canvas" width="640" height="360"></canvas>
+
+                <div id="moment-game-result" class="moment-game-result"></div>
+
+                <div class="moment-game-actions">
+                    <button id="moment-game-retry-btn" class="btn btn-secondary">Try Again</button>
+                    <button id="moment-game-close-btn" class="btn btn-primary">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page: Stats -->
+    <div id="stats-page" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Tournament Stats</h1>
+                <p class="subtitle">Top scorers, award races, and standout performances</p>
+            </div>
+
+            <div class="stats-grid">
+                <section class="stats-card stats-card-wide">
+                    <h2 class="stats-card-title">🥇 Golden Boot Race · Top Scorers</h2>
+                    <div id="stats-top-scorers" class="stats-leaderboard">
+                        <!-- Top scorers will be loaded here -->
+                    </div>
+                </section>
+
+                <section class="stats-card">
+                    <h2 class="stats-card-title">🎯 Top Assists</h2>
+                    <div id="stats-top-assists" class="stats-leaderboard">
+                        <!-- Top assists will be loaded here -->
+                    </div>
+                </section>
+
+                <section class="stats-card">
+                    <h2 class="stats-card-title">🧤 Golden Glove Race</h2>
+                    <div id="stats-golden-glove" class="stats-leaderboard">
+                        <!-- Golden glove race will be loaded here -->
+                    </div>
+                </section>
+
+                <section class="stats-card stats-card-wide">
+                    <h2 class="stats-card-title">⭐ Team of the Tournament (Fan XI)</h2>
+                    <p class="stats-card-note">Editorial pick based on player ratings — not an official FIFA award.</p>
+                    <div id="stats-tott" class="pitch tott-pitch">
+                        <div class="pitch-players" id="stats-tott-players">
+                            <!-- Team of the Tournament will be loaded here -->
+                        </div>
+                    </div>
+                </section>
+
+                <section class="stats-card">
+                    <h2 class="stats-card-title">🏆 Player of the Tournament</h2>
+                    <p class="stats-card-note">Editorial pick — not an official FIFA award.</p>
+                    <div id="stats-pott" class="pott-card">
+                        <!-- Player of the Tournament will be loaded here -->
+                    </div>
+                </section>
+
+                <section class="stats-card">
+                    <h2 class="stats-card-title">🔥 Most Goals in a Match</h2>
+                    <div id="stats-most-goals" class="stats-leaderboard">
+                        <!-- Highest-scoring matches will be loaded here -->
+                    </div>
+                </section>
+
+                <section class="stats-card">
+                    <h2 class="stats-card-title">💥 Biggest Win Margins</h2>
+                    <div id="stats-biggest-wins" class="stats-leaderboard">
+                        <!-- Biggest win margins will be loaded here -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page: Forum -->
+    <div id="forum-page" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Forum</h1>
+                <p class="subtitle">Talk football, react to matches, follow creators, and join the World Cup community</p>
+            </div>
+
+            <div class="forum-filter-tabs">
+                <button class="forum-tab active" data-forum-filter="all">All Posts</button>
+                <button class="forum-tab" data-forum-filter="following">Following</button>
+            </div>
+
+            <div id="forum-message" class="forum-message" style="display: none;"></div>
+            <div id="forum-composer"></div>
+            <div id="forum-posts" class="forum-posts"></div>
+        </div>
+    </div>
+
+    <!-- Page: Profile -->
+    <div id="profile-page" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Profile</h1>
+                <p class="subtitle">Show your World Cup colors, track your notifications, and see your community activity</p>
+            </div>
+
+            <div id="profile-message" class="profile-message" style="display: none;"></div>
+            <div id="profile-content"></div>
+        </div>
+    </div>
+
+    <!-- Page: Admin -->
+    <div id="admin-page" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Admin Panel</h1>
+                <p class="subtitle">Manage members, monitor growth, and unlock admin-only tools</p>
+            </div>
+
+            <div id="admin-access-message" class="admin-access-message" style="display: none;"></div>
+
+            <div id="admin-dashboard" class="admin-dashboard" style="display: none;">
+                <section class="admin-card admin-card-wide">
+                    <div class="admin-card-header">
+                        <div>
+                            <h2 class="admin-card-title">Admin Benefits</h2>
+                            <p class="admin-card-note">Your account can access platform insights not available to regular users.</p>
+                        </div>
+                        <div class="admin-actions-row">
+                            <button id="admin-refresh-btn" class="btn btn-secondary">Refresh</button>
+                            <button id="admin-export-btn" class="btn btn-primary">Export Users CSV</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-benefits-grid">
+                        <div class="admin-benefit-item">
+                            <span class="admin-benefit-icon">📊</span>
+                            <div>
+                                <h3>Live User Overview</h3>
+                                <p>See the total number of registered accounts, admin accounts, signups from the last 7 days, and stored drafts.</p>
+                            </div>
+                        </div>
+                        <div class="admin-benefit-item">
+                            <span class="admin-benefit-icon">🧾</span>
+                            <div>
+                                <h3>CSV Export</h3>
+                                <p>Download the current user directory for moderation, analytics, or backup workflows.</p>
+                            </div>
+                        </div>
+                        <div class="admin-benefit-item">
+                            <span class="admin-benefit-icon">🛡️</span>
+                            <div>
+                                <h3>Protected Access</h3>
+                                <p>This page is only visible to accounts whose <code>admin</code> flag is enabled in PostgreSQL.</p>
+                            </div>
+                        </div>
+                        <div class="admin-benefit-item">
+                            <span class="admin-benefit-icon">🧰</span>
+                            <div>
+                                <h3>User Management</h3>
+                                <p>Search users, promote or demote admins, inspect saved drafts, and remove accounts when needed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="admin-card">
+                    <h2 class="admin-card-title">Platform Snapshot</h2>
+                    <div id="admin-stats-grid" class="admin-stats-grid"></div>
+                </section>
+
+                <section class="admin-card admin-card-wide">
+                    <div class="admin-card-header">
+                        <div>
+                            <h2 class="admin-card-title">Recent Signups</h2>
+                            <p class="admin-card-note">Latest members and whether they already saved a draft.</p>
+                        </div>
+                    </div>
+                    <div id="admin-recent-users"></div>
+                </section>
+
+                <section class="admin-card admin-card-wide">
+                    <div class="admin-card-header">
+                        <div>
+                            <h2 class="admin-card-title">User Management</h2>
+                            <p class="admin-card-note">Search members, filter by role, manage admin status, view saved drafts, and delete accounts.</p>
+                        </div>
+                        <div class="admin-user-tools">
+                            <input id="admin-user-search" class="admin-search-input" type="search" placeholder="Search username or email">
+                            <select id="admin-role-filter" class="admin-role-filter">
+                                <option value="all">All Roles</option>
+                                <option value="admin">Admins</option>
+                                <option value="user">Users</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="admin-user-count" class="admin-user-count"></div>
+                    <div id="admin-user-list"></div>
+                </section>
+
+                <section class="admin-card admin-card-wide">
+                    <div class="admin-card-header">
+                        <div>
+                            <h2 class="admin-card-title">Admin Command Console</h2>
+                            <p class="admin-card-note">Run command-style moderation and management actions directly from the panel.</p>
+                        </div>
+                    </div>
+                    <div class="admin-command-help">
+                        <span><code>/help</code></span>
+                        <span><code>/admin username on|off</code></span>
+                        <span><code>/deleteuser username</code></span>
+                        <span><code>/viewdraft username</code></span>
+                        <span><code>/lockpost 42</code></span>
+                        <span><code>/unlockpost 42</code></span>
+                        <span><code>/deletepost 42</code></span>
+                        <span><code>/profileflag username 🇦🇷</code></span>
+                    </div>
+                    <form id="admin-command-form" class="admin-command-form">
+                        <input id="admin-command-input" class="admin-command-input" type="text" placeholder="Type an admin command..." autocomplete="off">
+                        <button type="submit" class="btn btn-primary">Run</button>
+                    </form>
+                    <div id="admin-command-output" class="admin-command-output">
+                        <div class="admin-empty-state">Run <code>/help</code> to see available commands.</div>
+                    </div>
+                </section>
+
+                <section class="admin-card admin-card-wide">
+                    <div class="admin-card-header">
+                        <div>
+                            <h2 class="admin-card-title">Saved Draft Viewer</h2>
+                            <p class="admin-card-note">Inspect the latest saved FUT Draft for any user.</p>
+                        </div>
+                    </div>
+                    <div id="admin-draft-viewer" class="admin-draft-viewer">
+                        <div class="admin-empty-state">Select “View Draft” on a user to inspect their saved squad.</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page: Login -->
+    <div id="login-page" class="page">
+        <div class="container">
+            <div class="login-card">
+                <div class="page-header">
+                    <h1>Welcome Back</h1>
+                    <p class="subtitle">Log in to sync your drafts and favorite moments</p>
+                </div>
+                
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="login-email">Email / Username</label>
+                        <input type="text" id="login-email" required placeholder="Enter your email or username">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required placeholder="Enter your password">
+                    </div>
+                    <div id="login-error" class="auth-error" style="display: none;"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page: Sign Up -->
+    <div id="signup-page" class="page">
+        <div class="container">
+            <div class="login-card">
+                <div class="page-header">
+                    <h1>Create Account</h1>
+                    <p class="subtitle">Join the FIFA World Cup 2026™ community</p>
+                </div>
+                
+                <form id="signup-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="signup-username">Username</label>
+                        <input type="text" id="signup-username" required placeholder="Choose a username">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required placeholder="Choose a password">
+                    </div>
+                    <div id="signup-error" class="auth-error" style="display: none;"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" id="show-login">Log In</a></p>
+                </div>
             </div>
         </div>
     </div>
@@ -140,6 +473,12 @@
     <script src="data.js"></script>
     <script src="scores.js"></script>
     <script src="bracket.js"></script>
+    <script src="moments.js"></script>
+    <script src="stats.js"></script>
+    <script src="auth.js"></script>
+    <script src="profile.js"></script>
+    <script src="forum.js"></script>
+    <script src="admin.js"></script>
     <script src="draft.js"></script>
     <script src="app.js"></script>
 </body>
