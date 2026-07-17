@@ -99,7 +99,7 @@ async function handleLogin(e) {
     const password = document.getElementById('login-password').value;
 
     try {
-        const response = await fetch('/api/login', {
+        const response = await fetch(apiUrl('/api/login'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -146,7 +146,7 @@ async function handleSignup(e) {
     const password = document.getElementById('signup-password').value;
 
     try {
-        const response = await fetch('/api/signup', {
+        const response = await fetch(apiUrl('/api/signup'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -181,7 +181,7 @@ async function restoreSession() {
     }
 
     try {
-        const response = await fetch('/api/me', {
+        const response = await fetch(apiUrl('/api/me'), {
             method: 'GET',
             credentials: 'include',
             cache: 'no-store'
@@ -221,7 +221,7 @@ async function restoreSession() {
 
 async function handleLogout() {
     try {
-        await fetch('/api/logout', {
+        await fetch(apiUrl('/api/logout'), {
             method: 'POST',
             credentials: 'include'
         });

@@ -175,7 +175,7 @@ function renderProfileData(data, notifications = null) {
     if (followButton) {
         followButton.addEventListener('click', async () => {
             try {
-                const response = await fetch(`/api/forum/users/${encodeURIComponent(followButton.dataset.username)}/follow`, {
+                const response = await fetch(apiUrl(`/api/forum/users/${encodeURIComponent(followButton.dataset.username)}/follow`), {
                     method: 'POST',
                     credentials: 'include'
                 });
@@ -201,7 +201,7 @@ function renderProfileData(data, notifications = null) {
             const profileFlag = select ? select.value : '';
 
             try {
-                const response = await fetch('/api/profile/flag', {
+                const response = await fetch(apiUrl('/api/profile/flag'), {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
                     credentials: 'include',
@@ -232,7 +232,7 @@ function renderProfileData(data, notifications = null) {
     if (markReadButton) {
         markReadButton.addEventListener('click', async () => {
             try {
-                const response = await fetch('/api/notifications/read-all', {
+                const response = await fetch(apiUrl('/api/notifications/read-all'), {
                     method: 'POST',
                     credentials: 'include'
                 });
@@ -253,7 +253,7 @@ async function loadNotifications() {
         return null;
     }
 
-    const response = await fetch('/api/notifications', {
+    const response = await fetch(apiUrl('/api/notifications'), {
         method: 'GET',
         credentials: 'include',
         cache: 'no-store'
@@ -285,7 +285,7 @@ async function initProfilePage(username = null) {
     renderProfileSkeleton();
 
     try {
-        const response = await fetch(`/api/profile/${encodeURIComponent(targetUsername)}`, {
+        const response = await fetch(apiUrl(`/api/profile/${encodeURIComponent(targetUsername)}`), {
             method: 'GET',
             credentials: 'include',
             cache: 'no-store'

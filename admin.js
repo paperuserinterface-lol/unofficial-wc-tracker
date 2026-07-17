@@ -278,7 +278,7 @@ async function loadAdminUsers() {
     }
 
     const url = `/api/admin/users${query.toString() ? `?${query.toString()}` : ''}`;
-    const response = await fetch(url, {
+    const response = await fetch(apiUrl(url), {
         method: 'GET',
         credentials: 'include',
         cache: 'no-store'
@@ -311,7 +311,7 @@ async function initAdminPage() {
     setAdminState({ loading: true });
 
     try {
-        const response = await fetch('/api/admin/overview', {
+        const response = await fetch(apiUrl('/api/admin/overview'), {
             method: 'GET',
             credentials: 'include',
             cache: 'no-store'
@@ -339,7 +339,7 @@ async function exportAdminUsersCsv() {
     }
 
     try {
-        const response = await fetch('/api/admin/users', {
+        const response = await fetch(apiUrl('/api/admin/users'), {
             method: 'GET',
             credentials: 'include',
             cache: 'no-store'
@@ -384,7 +384,7 @@ async function exportAdminUsersCsv() {
 
 async function viewAdminUserDraft(userId) {
     try {
-        const response = await fetch(`/api/admin/users/${userId}/draft`, {
+        const response = await fetch(apiUrl(`/api/admin/users/${userId}/draft`), {
             method: 'GET',
             credentials: 'include',
             cache: 'no-store'
@@ -404,7 +404,7 @@ async function viewAdminUserDraft(userId) {
 
 async function updateAdminRole(userId, nextAdminValue) {
     try {
-        const response = await fetch(`/api/admin/users/${userId}/admin`, {
+        const response = await fetch(apiUrl(`/api/admin/users/${userId}/admin`), {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -430,7 +430,7 @@ async function runAdminCommand(commandText) {
     }
 
     try {
-        const response = await fetch('/api/admin/command', {
+        const response = await fetch(apiUrl('/api/admin/command'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -461,7 +461,7 @@ async function deleteAdminUser(userId, username) {
     }
 
     try {
-        const response = await fetch(`/api/admin/users/${userId}`, {
+        const response = await fetch(apiUrl(`/api/admin/users/${userId}`), {
             method: 'DELETE',
             credentials: 'include'
         });

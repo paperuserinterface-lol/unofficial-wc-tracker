@@ -33,6 +33,29 @@ const pool = new Pool({
 app.set('trust proxy', 1);
 
 app.use(express.json());
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  const allowedOrigins = new Set([
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:5500',
+    'http://127.0.0.1:5500',
+    'https://unofficial-wc-tracker-production.up.railway.app'
+  ]);
+
+  if (origin && allowedOrigins.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+  }
+
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+
+  return next();
+});
 app.use('/api', (req, res, next) => {
   res.set('Cache-Control', 'no-store');
   next();

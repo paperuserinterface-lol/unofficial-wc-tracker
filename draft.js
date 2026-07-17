@@ -274,7 +274,7 @@ async function saveDraftToServer() {
         return false;
     }
 
-    const response = await fetch('/api/drafts/latest', {
+    const response = await fetch(apiUrl('/api/drafts/latest'), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -393,7 +393,7 @@ async function loadDraftFromServer() {
     }
 
     try {
-        const response = await fetch('/api/drafts/latest', {
+        const response = await fetch(apiUrl('/api/drafts/latest'), {
             method: 'GET',
             credentials: 'include',
             cache: 'no-store'
@@ -469,7 +469,7 @@ function resetDraft() {
         renderPitch();
 
         if (currentUser) {
-            fetch('/api/drafts/latest', {
+            fetch(apiUrl('/api/drafts/latest'), {
                 method: 'DELETE',
                 credentials: 'include'
             }).catch((error) => {

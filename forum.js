@@ -174,7 +174,7 @@ async function loadForumPosts() {
     }
 
     try {
-        const response = await fetch(`/api/forum/posts?filter=${encodeURIComponent(forumCurrentFilter)}`, {
+        const response = await fetch(apiUrl(`/api/forum/posts?filter=${encodeURIComponent(forumCurrentFilter)}`), {
             method: 'GET',
             credentials: 'include',
             cache: 'no-store'
@@ -202,7 +202,7 @@ async function loadForumPosts() {
 
 async function loadForumComments(postId, rerender = true) {
     try {
-        const response = await fetch(`/api/forum/posts/${postId}/comments`, {
+        const response = await fetch(apiUrl(`/api/forum/posts/${postId}/comments`), {
             method: 'GET',
             credentials: 'include',
             cache: 'no-store'
@@ -239,7 +239,7 @@ async function handleForumPostSubmit(event) {
     }
 
     try {
-        const response = await fetch('/api/forum/posts', {
+        const response = await fetch(apiUrl('/api/forum/posts'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -270,7 +270,7 @@ async function toggleForumLike(postId) {
     }
 
     try {
-        const response = await fetch(`/api/forum/posts/${postId}/like`, {
+        const response = await fetch(apiUrl(`/api/forum/posts/${postId}/like`), {
             method: 'POST',
             credentials: 'include'
         });
@@ -294,7 +294,7 @@ async function toggleForumFollow(username) {
     }
 
     try {
-        const response = await fetch(`/api/forum/users/${encodeURIComponent(username)}/follow`, {
+        const response = await fetch(apiUrl(`/api/forum/users/${encodeURIComponent(username)}/follow`), {
             method: 'POST',
             credentials: 'include'
         });
@@ -330,7 +330,7 @@ async function submitForumComment(postId, content) {
     }
 
     try {
-        const response = await fetch(`/api/forum/posts/${postId}/comments`, {
+        const response = await fetch(apiUrl(`/api/forum/posts/${postId}/comments`), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -368,7 +368,7 @@ async function editForumPost(postId) {
     }
 
     try {
-        const response = await fetch(`/api/forum/posts/${postId}`, {
+        const response = await fetch(apiUrl(`/api/forum/posts/${postId}`), {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -399,7 +399,7 @@ async function deleteForumPost(postId, adminMode = false) {
 
     try {
         const endpoint = adminMode ? `/api/admin/forum/posts/${postId}` : `/api/forum/posts/${postId}`;
-        const response = await fetch(endpoint, {
+        const response = await fetch(apiUrl(endpoint), {
             method: 'DELETE',
             credentials: 'include'
         });
@@ -421,7 +421,7 @@ async function deleteForumPost(postId, adminMode = false) {
 
 async function toggleForumPostLock(postId, nextLocked) {
     try {
-        const response = await fetch(`/api/admin/forum/posts/${postId}/lock`, {
+        const response = await fetch(apiUrl(`/api/admin/forum/posts/${postId}/lock`), {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
