@@ -55,11 +55,11 @@ function updateNavState() {
     if (!navLoginLink) return;
 
     if (currentUser) {
-        navLoginLink.textContent = `Logout (${currentUser.username})`;
+        navLoginLink.textContent = `${translate('nav.logout')} (${currentUser.username})`;
         navLoginLink.classList.add('logged-in');
         navLoginLink.dataset.page = 'logout';
     } else {
-        navLoginLink.textContent = 'Login';
+        navLoginLink.textContent = translate('nav.login');
         navLoginLink.classList.remove('logged-in');
         navLoginLink.dataset.page = 'login';
     }

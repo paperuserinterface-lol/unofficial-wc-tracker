@@ -60,6 +60,43 @@ body {
     font-size: 2rem;
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.language-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    background: var(--bg-card);
+}
+
+.language-btn {
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.language-btn:hover {
+    color: var(--text-primary);
+}
+
+.language-btn.active {
+    background: var(--primary);
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px rgba(0, 150, 136, 0.3);
+}
+
 .nav-links {
     display: flex;
     gap: 0.5rem;

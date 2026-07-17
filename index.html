@@ -14,16 +14,22 @@
                 <span class="logo-icon">⚽</span>
                 <span class="logo-text">FIFA World Cup 2026™</span>
             </div>
-            <div class="nav-links">
-                <a href="#" class="nav-link active" data-page="scores">Scores</a>
-                <a href="#" class="nav-link" data-page="bracket">Bracket & Groups</a>
-                <a href="#" class="nav-link" data-page="moments">Moments</a>
-                <a href="#" class="nav-link" data-page="stats">Stats</a>
-                <a href="#" class="nav-link" data-page="forum">Forum</a>
-                <a href="#" class="nav-link" data-page="draft">Draft</a>
-                <a href="#" class="nav-link" data-page="profile" id="nav-profile-link" style="display: none;">Profile</a>
-                <a href="#" class="nav-link admin-nav-link" data-page="admin" id="nav-admin-link" style="display: none;">Admin Panel</a>
-                <a href="#" class="nav-link login-btn-nav" data-page="login" id="nav-login-link">Login</a>
+            <div class="nav-actions">
+                <div class="language-toggle" role="group" aria-label="Language switcher">
+                    <button type="button" class="language-btn active" data-language="en">EN</button>
+                    <button type="button" class="language-btn" data-language="uz">UZ</button>
+                </div>
+                <div class="nav-links">
+                    <a href="#" class="nav-link active" data-page="scores" data-i18n="nav.scores">Scores</a>
+                    <a href="#" class="nav-link" data-page="bracket" data-i18n="nav.bracket">Bracket & Groups</a>
+                    <a href="#" class="nav-link" data-page="moments" data-i18n="nav.moments">Moments</a>
+                    <a href="#" class="nav-link" data-page="stats" data-i18n="nav.stats">Stats</a>
+                    <a href="#" class="nav-link" data-page="forum" data-i18n="nav.forum">Forum</a>
+                    <a href="#" class="nav-link" data-page="draft" data-i18n="nav.draft">Draft</a>
+                    <a href="#" class="nav-link" data-page="profile" id="nav-profile-link" style="display: none;" data-i18n="nav.profile">Profile</a>
+                    <a href="#" class="nav-link admin-nav-link" data-page="admin" id="nav-admin-link" style="display: none;" data-i18n="nav.admin">Admin Panel</a>
+                    <a href="#" class="nav-link login-btn-nav" data-page="login" id="nav-login-link">Login</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -32,15 +38,15 @@
     <div id="scores-page" class="page active">
         <div class="container">
             <div class="page-header">
-                <h1>Live Scores</h1>
-                <p class="subtitle">Track all FIFA World Cup 2026™ matches</p>
+                <h1 data-i18n="scores.title">Live Scores</h1>
+                <p class="subtitle" data-i18n="scores.subtitle">Track all FIFA World Cup 2026™ matches</p>
             </div>
             
             <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">All</button>
-                <button class="filter-tab" data-filter="upcoming">Upcoming</button>
-                <button class="filter-tab" data-filter="live">Live</button>
-                <button class="filter-tab" data-filter="finished">Finished</button>
+                <button class="filter-tab active" data-filter="all" data-i18n="filters.all">All</button>
+                <button class="filter-tab" data-filter="upcoming" data-i18n="filters.upcoming">Upcoming</button>
+                <button class="filter-tab" data-filter="live" data-i18n="filters.live">Live</button>
+                <button class="filter-tab" data-filter="finished" data-i18n="filters.finished">Finished</button>
             </div>
 
             <div id="matches-container" class="matches-container">
@@ -53,13 +59,13 @@
     <div id="bracket-page" class="page">
         <div class="container">
             <div class="page-header">
-                <h1>Bracket & Groups</h1>
-                <p class="subtitle">Group tables and knockout stage</p>
+                <h1 data-i18n="bracket.title">Bracket & Groups</h1>
+                <p class="subtitle" data-i18n="bracket.subtitle">Group tables and knockout stage</p>
             </div>
 
             <div class="bracket-tabs">
-                <button class="bracket-tab active" data-tab="groups">Groups</button>
-                <button class="bracket-tab" data-tab="knockout">Knockout</button>
+                <button class="bracket-tab active" data-tab="groups" data-i18n="bracket.groups">Groups</button>
+                <button class="bracket-tab" data-tab="knockout" data-i18n="bracket.knockout">Knockout</button>
             </div>
 
             <div id="groups-container" class="groups-container">
@@ -76,15 +82,15 @@
     <div id="moments-page" class="page">
         <div class="container">
             <div class="page-header">
-                <h1>Moments</h1>
-                <p class="subtitle">A digital museum of football history's most unforgettable seconds</p>
+                <h1 data-i18n="moments.title">Moments</h1>
+                <p class="subtitle" data-i18n="moments.subtitle">A digital museum of football history's most unforgettable seconds</p>
             </div>
 
             <div class="moment-filter-tabs">
-                <button class="moment-tab active" data-moment-filter="all">All</button>
-                <button class="moment-tab" data-moment-filter="goal">Goals</button>
-                <button class="moment-tab" data-moment-filter="save">Saves</button>
-                <button class="moment-tab" data-moment-filter="emotion">Emotion</button>
+                <button class="moment-tab active" data-moment-filter="all" data-i18n="filters.all">All</button>
+                <button class="moment-tab" data-moment-filter="goal" data-i18n="moments.goals">Goals</button>
+                <button class="moment-tab" data-moment-filter="save" data-i18n="moments.saves">Saves</button>
+                <button class="moment-tab" data-moment-filter="emotion" data-i18n="moments.emotion">Emotion</button>
             </div>
 
             <div id="moments-container" class="moments-container">
@@ -95,16 +101,16 @@
         <div id="moment-game-modal" class="modal">
             <div class="modal-content moment-game-content">
                 <span class="close-btn" id="moment-game-close">&times;</span>
-                <h2 id="moment-game-title">Recreate The Moment</h2>
-                <p id="moment-game-instructions" class="moment-game-instructions">Watch how it happened...</p>
+                <h2 id="moment-game-title" data-i18n="moments.recreate">Recreate The Moment</h2>
+                <p id="moment-game-instructions" class="moment-game-instructions" data-i18n="moments.instructions">Watch how it happened...</p>
 
                 <canvas id="moment-game-canvas" class="moment-game-canvas" width="640" height="360"></canvas>
 
                 <div id="moment-game-result" class="moment-game-result"></div>
 
                 <div class="moment-game-actions">
-                    <button id="moment-game-retry-btn" class="btn btn-secondary">Try Again</button>
-                    <button id="moment-game-close-btn" class="btn btn-primary">Close</button>
+                    <button id="moment-game-retry-btn" class="btn btn-secondary" data-i18n="actions.tryAgain">Try Again</button>
+                    <button id="moment-game-close-btn" class="btn btn-primary" data-i18n="actions.close">Close</button>
                 </div>
             </div>
         </div>
@@ -114,8 +120,8 @@
     <div id="stats-page" class="page">
         <div class="container">
             <div class="page-header">
-                <h1>Tournament Stats</h1>
-                <p class="subtitle">Top scorers, award races, and standout performances</p>
+                <h1 data-i18n="stats.title">Tournament Stats</h1>
+                <p class="subtitle" data-i18n="stats.subtitle">Top scorers, award races, and standout performances</p>
             </div>
 
             <div class="stats-grid">
@@ -179,13 +185,13 @@
     <div id="forum-page" class="page">
         <div class="container">
             <div class="page-header">
-                <h1>Forum</h1>
-                <p class="subtitle">Talk football, react to matches, follow creators, and join the World Cup community</p>
+                <h1 data-i18n="forum.title">Forum</h1>
+                <p class="subtitle" data-i18n="forum.subtitle">Talk football, react to matches, follow creators, and join the World Cup community</p>
             </div>
 
             <div class="forum-filter-tabs">
-                <button class="forum-tab active" data-forum-filter="all">All Posts</button>
-                <button class="forum-tab" data-forum-filter="following">Following</button>
+                <button class="forum-tab active" data-forum-filter="all" data-i18n="forum.allPosts">All Posts</button>
+                <button class="forum-tab" data-forum-filter="following" data-i18n="forum.following">Following</button>
             </div>
 
             <div id="forum-message" class="forum-message" style="display: none;"></div>
@@ -198,8 +204,8 @@
     <div id="profile-page" class="page">
         <div class="container">
             <div class="page-header">
-                <h1>Profile</h1>
-                <p class="subtitle">Show your World Cup colors, track your notifications, and see your community activity</p>
+                <h1 data-i18n="profile.title">Profile</h1>
+                <p class="subtitle" data-i18n="profile.subtitle">Show your World Cup colors, track your notifications, and see your community activity</p>
             </div>
 
             <div id="profile-message" class="profile-message" style="display: none;"></div>
@@ -211,8 +217,8 @@
     <div id="admin-page" class="page">
         <div class="container">
             <div class="page-header">
-                <h1>Admin Panel</h1>
-                <p class="subtitle">Manage members, monitor growth, and unlock admin-only tools</p>
+                <h1 data-i18n="admin.title">Admin Panel</h1>
+                <p class="subtitle" data-i18n="admin.subtitle">Manage members, monitor growth, and unlock admin-only tools</p>
             </div>
 
             <div id="admin-access-message" class="admin-access-message" style="display: none;"></div>
@@ -225,8 +231,8 @@
                             <p class="admin-card-note">Your account can access platform insights not available to regular users.</p>
                         </div>
                         <div class="admin-actions-row">
-                            <button id="admin-refresh-btn" class="btn btn-secondary">Refresh</button>
-                            <button id="admin-export-btn" class="btn btn-primary">Export Users CSV</button>
+                            <button id="admin-refresh-btn" class="btn btn-secondary" data-i18n="actions.refresh">Refresh</button>
+                            <button id="admin-export-btn" class="btn btn-primary" data-i18n="admin.exportCsv">Export Users CSV</button>
                         </div>
                     </div>
 
@@ -342,25 +348,25 @@
         <div class="container">
             <div class="login-card">
                 <div class="page-header">
-                    <h1>Welcome Back</h1>
-                    <p class="subtitle">Log in to sync your drafts and favorite moments</p>
+                    <h1 data-i18n="auth.loginTitle">Welcome Back</h1>
+                    <p class="subtitle" data-i18n="auth.loginSubtitle">Log in to sync your drafts and favorite moments</p>
                 </div>
                 
                 <form id="login-form" class="auth-form">
                     <div class="form-group">
-                        <label for="login-email">Email / Username</label>
-                        <input type="text" id="login-email" required placeholder="Enter your email or username">
+                        <label for="login-email" data-i18n="auth.emailOrUsername">Email / Username</label>
+                        <input type="text" id="login-email" required placeholder="Enter your email or username" data-i18n-placeholder="auth.emailOrUsernamePlaceholder">
                     </div>
                     <div class="form-group">
-                        <label for="login-password">Password</label>
-                        <input type="password" id="login-password" required placeholder="Enter your password">
+                        <label for="login-password" data-i18n="auth.password">Password</label>
+                        <input type="password" id="login-password" required placeholder="Enter your password" data-i18n-placeholder="auth.passwordPlaceholder">
                     </div>
                     <div id="login-error" class="auth-error" style="display: none;"></div>
-                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    <button type="submit" class="btn btn-primary btn-block" data-i18n="auth.logIn">Log In</button>
                 </form>
                 
                 <div class="auth-footer">
-                    <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+                    <p><span data-i18n="auth.noAccount">Don't have an account?</span> <a href="#" id="show-signup" data-i18n="auth.signUp">Sign Up</a></p>
                 </div>
             </div>
         </div>
@@ -371,29 +377,29 @@
         <div class="container">
             <div class="login-card">
                 <div class="page-header">
-                    <h1>Create Account</h1>
-                    <p class="subtitle">Join the FIFA World Cup 2026™ community</p>
+                    <h1 data-i18n="auth.signupTitle">Create Account</h1>
+                    <p class="subtitle" data-i18n="auth.signupSubtitle">Join the FIFA World Cup 2026™ community</p>
                 </div>
                 
                 <form id="signup-form" class="auth-form">
                     <div class="form-group">
-                        <label for="signup-username">Username</label>
-                        <input type="text" id="signup-username" required placeholder="Choose a username">
+                        <label for="signup-username" data-i18n="auth.username">Username</label>
+                        <input type="text" id="signup-username" required placeholder="Choose a username" data-i18n-placeholder="auth.usernamePlaceholder">
                     </div>
                     <div class="form-group">
-                        <label for="signup-email">Email</label>
-                        <input type="email" id="signup-email" required placeholder="Enter your email">
+                        <label for="signup-email" data-i18n="auth.email">Email</label>
+                        <input type="email" id="signup-email" required placeholder="Enter your email" data-i18n-placeholder="auth.emailPlaceholder">
                     </div>
                     <div class="form-group">
-                        <label for="signup-password">Password</label>
-                        <input type="password" id="signup-password" required placeholder="Choose a password">
+                        <label for="signup-password" data-i18n="auth.password">Password</label>
+                        <input type="password" id="signup-password" required placeholder="Choose a password" data-i18n-placeholder="auth.signupPasswordPlaceholder">
                     </div>
                     <div id="signup-error" class="auth-error" style="display: none;"></div>
-                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                    <button type="submit" class="btn btn-primary btn-block" data-i18n="auth.signUp">Sign Up</button>
                 </form>
                 
                 <div class="auth-footer">
-                    <p>Already have an account? <a href="#" id="show-login">Log In</a></p>
+                    <p><span data-i18n="auth.haveAccount">Already have an account?</span> <a href="#" id="show-login" data-i18n="auth.logIn">Log In</a></p>
                 </div>
             </div>
         </div>
@@ -403,13 +409,13 @@
     <div id="draft-page" class="page">
         <div class="container">
             <div class="page-header">
-                <h1>FUT Draft</h1>
-                <p class="subtitle">Build your ultimate World Cup XI</p>
+                <h1 data-i18n="draft.title">FUT Draft</h1>
+                <p class="subtitle" data-i18n="draft.subtitle">Build your ultimate World Cup XI</p>
             </div>
 
             <div class="draft-controls">
                 <div class="formation-selector">
-                    <label>Formation:</label>
+                    <label data-i18n="draft.formation">Formation:</label>
                     <select id="formation-select">
                         <option value="4-3-3">4-3-3</option>
                         <option value="4-4-2">4-4-2</option>
@@ -419,20 +425,20 @@
                     </select>
                 </div>
                 <div class="draft-actions">
-                    <button id="randomize-draft-btn" class="btn btn-secondary">Randomize</button>
-                    <button id="save-draft-btn" class="btn btn-primary">Save Draft</button>
-                    <button id="export-draft-txt-btn" class="btn btn-secondary">Export TXT</button>
-                    <button id="reset-draft-btn" class="btn btn-danger">Reset</button>
+                    <button id="randomize-draft-btn" class="btn btn-secondary" data-i18n="draft.randomize">Randomize</button>
+                    <button id="save-draft-btn" class="btn btn-primary" data-i18n="draft.save">Save Draft</button>
+                    <button id="export-draft-txt-btn" class="btn btn-secondary" data-i18n="draft.exportTxt">Export TXT</button>
+                    <button id="reset-draft-btn" class="btn btn-danger" data-i18n="actions.reset">Reset</button>
                 </div>
             </div>
 
             <div class="draft-stats">
                 <div class="stat-card">
-                    <div class="stat-label">Team Rating</div>
+                    <div class="stat-label" data-i18n="draft.teamRating">Team Rating</div>
                     <div class="stat-value" id="team-rating">85</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Chemistry</div>
+                    <div class="stat-label" data-i18n="draft.chemistry">Chemistry</div>
                     <div class="stat-value" id="team-chemistry">100</div>
                 </div>
             </div>
@@ -444,7 +450,7 @@
                     </div>
                 </div>
                 <div class="substitutes">
-                    <h3>Substitutes</h3>
+                    <h3 data-i18n="draft.substitutes">Substitutes</h3>
                     <div id="substitutes-container">
                         <!-- Substitutes will be loaded here -->
                     </div>
@@ -454,7 +460,7 @@
             <div id="draft-modal" class="modal">
                 <div class="modal-content">
                     <span class="close-btn">&times;</span>
-                    <h2 id="modal-title">Choose Player</h2>
+                    <h2 id="modal-title" data-i18n="draft.choosePlayer">Choose Player</h2>
                     <div id="player-options" class="player-options">
                         <!-- Player options will be loaded here -->
                     </div>
@@ -466,7 +472,7 @@
     <!-- Footer / Disclaimer -->
     <footer class="footer">
         <div class="footer-content">
-            <p><strong>Disclaimer:</strong> This site is not affiliated, associated, authorized, endorsed by, or in any way officially connected with FIFA, or any of its subsidiaries or its affiliates. All product and company names are the registered trademarks of their original owners.</p>
+            <p><strong data-i18n="footer.disclaimerLabel">Disclaimer:</strong> <span data-i18n="footer.disclaimerText">This site is not affiliated, associated, authorized, endorsed by, or in any way officially connected with FIFA, or any of its subsidiaries or its affiliates. All product and company names are the registered trademarks of their original owners.</span></p>
         </div>
     </footer>
 
