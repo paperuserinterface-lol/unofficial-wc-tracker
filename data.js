@@ -31,7 +31,7 @@ const PLAYERS = [
     { id: 22, name: 'William Saliba', position: 'CB', nation: '🇫🇷', club: 'Arsenal', rating: 88, pace: 83, shooting: 53, passing: 76, dribbling: 73, defense: 91, physical: 83 },
     { id: 23, name: 'Dayot Upamecano', position: 'CB', nation: '🇫🇷', club: 'Bayern Munich', rating: 86, pace: 82, shooting: 52, passing: 72, dribbling: 70, defense: 88, physical: 88 },
     { id: 24, name: 'Jules Koundé', position: 'CB', nation: '🇫🇷', club: 'Barcelona', rating: 87, pace: 86, shooting: 64, passing: 80, dribbling: 80, defense: 85, physical: 80 },
-    { id: 82, name: 'Michael Olise', position: 'RW', nation: '🇫🇷', club: 'Bayern Munich', rating: 85, pace: 82, shooting: 80, passing: 84, dribbling: 88, defense: 45, physical: 65 },
+    { id: 83, name: 'Michael Olise', position: 'RW', nation: '🇫🇷', club: 'Bayern Munich', rating: 85, pace: 82, shooting: 80, passing: 84, dribbling: 88, defense: 45, physical: 65 },
 
     // Spain
     { id: 25, name: 'Rodri', position: 'CDM', nation: '🇪🇸', club: 'Manchester City', rating: 92, pace: 68, shooting: 72, passing: 92, dribbling: 84, defense: 91, physical: 85 },
