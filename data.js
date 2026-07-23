@@ -1,7 +1,7 @@
 // Players database for Draft Mode - only players from 2026 WC qualified teams
 const PLAYERS = [
     // Argentina
-    { id: 1, name: 'Lionel Messi', position: 'ST', nation: '🇦🇷', club: 'Inter Miami', rating: 94, pace: 80, shooting: 94, passing: 92, dribbling: 96, defense: 38, physical: 68 },
+    { id: 1, name: 'Lionel Messi', position: 'RW', nation: '🇦🇷', club: 'Inter Miami', rating: 94, pace: 80, shooting: 94, passing: 92, dribbling: 96, defense: 38, physical: 68 },
     { id: 2, name: 'Emiliano Martínez', position: 'GK', nation: '🇦🇷', club: 'Aston Villa', rating: 88, pace: 55, shooting: 20, passing: 70, dribbling: 60, defense: 30, physical: 80, diving: 90, handling: 88, kicking: 75, positioning: 92, reflexes: 89 },
     { id: 3, name: 'Rodrigo De Paul', position: 'CM', nation: '🇦🇷', club: 'Atlético Madrid', rating: 84, pace: 78, shooting: 75, passing: 82, dribbling: 85, defense: 70, physical: 80 },
     { id: 4, name: 'Nahuel Molina', position: 'RB', nation: '🇦🇷', club: 'Atlético Madrid', rating: 83, pace: 85, shooting: 65, passing: 78, dribbling: 80, defense: 75, physical: 75 },
@@ -31,7 +31,7 @@ const PLAYERS = [
     { id: 22, name: 'William Saliba', position: 'CB', nation: '🇫🇷', club: 'Arsenal', rating: 88, pace: 83, shooting: 53, passing: 76, dribbling: 73, defense: 91, physical: 83 },
     { id: 23, name: 'Dayot Upamecano', position: 'CB', nation: '🇫🇷', club: 'Bayern Munich', rating: 86, pace: 82, shooting: 52, passing: 72, dribbling: 70, defense: 88, physical: 88 },
     { id: 24, name: 'Jules Koundé', position: 'CB', nation: '🇫🇷', club: 'Barcelona', rating: 87, pace: 86, shooting: 64, passing: 80, dribbling: 80, defense: 85, physical: 80 },
-    { id: 83, name: 'Michael Olise', position: 'RW', nation: '🇫🇷', club: 'Bayern Munich', rating: 85, pace: 82, shooting: 80, passing: 84, dribbling: 88, defense: 45, physical: 65 },
+    { id: 83, name: 'Michael Olise', position: 'CAM', nation: '🇫🇷', club: 'Bayern Munich', rating: 85, pace: 82, shooting: 80, passing: 84, dribbling: 88, defense: 45, physical: 65 },
 
     // Spain
     { id: 25, name: 'Rodri', position: 'CDM', nation: '🇪🇸', club: 'Manchester City', rating: 92, pace: 68, shooting: 72, passing: 92, dribbling: 84, defense: 91, physical: 85 },
