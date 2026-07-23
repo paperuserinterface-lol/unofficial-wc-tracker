@@ -160,7 +160,7 @@ const PLAYERS = [
     { id: 77, name: 'Abbosbek Fayzullaev', position: 'RW', nation: '🇺🇿', club: 'CSKA Moscow', rating: 78, pace: 84, shooting: 75, passing: 78, dribbling: 83, defense: 35, physical: 65 },
 
     // Norway
-    { id: 81, name: 'Erling Haaland', position: 'ST', nation: '🇳🇴', club: 'Manchester City', rating: 91, pace: 89, shooting: 94, passing: 70, dribbling: 82, defense: 45, physical: 94 }
+    { id: 82, name: 'Erling Haaland', position: 'ST', nation: '🇳🇴', club: 'Manchester City', rating: 91, pace: 89, shooting: 94, passing: 70, dribbling: 82, defense: 45, physical: 94 }
 ];
 
 // Formations
