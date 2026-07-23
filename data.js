@@ -184,11 +184,11 @@ const FORMATIONS = {
         ]
     },
     '3-5-2': {
-        positions: ['GK', 'CB1', 'CB2', 'CB3', 'RWB', 'CM1', 'CM', 'CM', 'LWB', 'ST', 'ST1'],
+        positions: ['GK', 'CB1', 'CB2', 'CB3', 'RWB', 'CM1', 'CM', 'CM2', 'LWB', 'ST', 'ST1'],
         layout: [
             ['GK'],
             ['CB1', 'CB2', 'CB3'],
-            ['RWB', 'CM1', 'CM', 'CM', 'LWB'],
+            ['RWB', 'CM1', 'CM', 'CM2', 'LWB'],
             ['ST', 'ST1']
         ]
     },
