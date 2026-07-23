@@ -37,6 +37,9 @@ const PLAYERS = [
     { id: 26, name: 'Pedri', position: 'CM', nation: '🇪🇸', club: 'Barcelona', rating: 91, pace: 78, shooting: 78, passing: 90, dribbling: 93, defense: 68, physical: 70 },
     { id: 27, name: 'Gavi', position: 'CM', nation: '🇪🇸', club: 'Barcelona', rating: 89, pace: 82, shooting: 76, passing: 86, dribbling: 88, defense: 76, physical: 76 },
     { id: 28, name: 'Alejandro Balde', position: 'LB', nation: '🇪🇸', club: 'Barcelona', rating: 84, pace: 96, shooting: 60, passing: 78, dribbling: 84, defense: 78, physical: 76 },
+    { id: 78, name: 'Pedro Porro', position: 'RB', nation: '🇪🇸', club: 'Tottenham', rating: 84, pace: 86, shooting: 76, passing: 82, dribbling: 82, defense: 78, physical: 74 },
+    { id: 79, name: 'Pau Cubarsí', position: 'CB', nation: '🇪🇸', club: 'Barcelona', rating: 82, pace: 72, shooting: 40, passing: 84, dribbling: 70, defense: 83, physical: 76 },
+    { id: 80, name: 'Marc Cucurella', position: 'LB', nation: '🇪🇸', club: 'Chelsea', rating: 84, pace: 82, shooting: 62, passing: 80, dribbling: 80, defense: 82, physical: 78 },
 
     // Germany
     { id: 29, name: 'Jamal Musiala', position: 'CAM', nation: '🇩🇪', club: 'Bayern Munich', rating: 91, pace: 86, shooting: 84, passing: 86, dribbling: 94, defense: 52, physical: 72 },
@@ -154,6 +157,9 @@ const PLAYERS = [
 
     // Uzbekistan extra
     { id: 77, name: 'Abbosbek Fayzullaev', position: 'RW', nation: '🇺🇿', club: 'CSKA Moscow', rating: 78, pace: 84, shooting: 75, passing: 78, dribbling: 83, defense: 35, physical: 65 },
+
+    // Norway
+    { id: 81, name: 'Erling Haaland', position: 'ST', nation: '🇳🇴', club: 'Manchester City', rating: 91, pace: 89, shooting: 94, passing: 70, dribbling: 82, defense: 45, physical: 94 }
 ];
 
 // Formations
