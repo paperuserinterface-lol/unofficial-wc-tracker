@@ -9,7 +9,7 @@ let statsTeams = [];
 let statsIntervalId = null;
 
 // Fan XI (4-3-3), editorial pick by rating using the existing player database.
-const TOTT_PLAYER_IDS = [43, 13, 35, 38, 53, 25, 42, 10, 59, 18, 6];
+const TOTT_PLAYER_IDS = [2, 78, 22, 79, 80, 25, 10, 1, 82, 18, 6];
 const POTT_PLAYER_ID = 1; // Kylian Mbappé — editorial pick
 
 function stripBidiControls(str) {
