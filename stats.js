@@ -10,7 +10,7 @@ let statsIntervalId = null;
 
 // Fan XI (4-3-3), editorial pick by rating using the existing player database.
 const TOTT_PLAYER_IDS = [2, 78, 22, 79, 80, 25, 10, 83, 1, 82, 18];
-const POTT_PLAYER_ID = 1; // Kylian Mbappé — editorial pick
+const POTT_PLAYER_ID = 1; // Lionel Messi — editorial pick
 
 function stripBidiControls(str) {
     return str.replace(/[\u200e\u200f\u202a-\u202e]/g, '');
