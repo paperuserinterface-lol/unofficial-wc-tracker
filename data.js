@@ -31,16 +31,20 @@ const PLAYERS = [
     { id: 22, name: 'William Saliba', position: 'CB', nation: '🇫🇷', club: 'Arsenal', rating: 88, pace: 83, shooting: 53, passing: 76, dribbling: 73, defense: 91, physical: 83 },
     { id: 23, name: 'Dayot Upamecano', position: 'CB', nation: '🇫🇷', club: 'Bayern Munich', rating: 86, pace: 82, shooting: 52, passing: 72, dribbling: 70, defense: 88, physical: 88 },
     { id: 24, name: 'Jules Koundé', position: 'CB', nation: '🇫🇷', club: 'Barcelona', rating: 87, pace: 86, shooting: 64, passing: 80, dribbling: 80, defense: 85, physical: 80 },
-    { id: 83, name: 'Michael Olise', position: 'CAM', nation: '🇫🇷', club: 'Bayern Munich', rating: 85, pace: 82, shooting: 80, passing: 84, dribbling: 88, defense: 45, physical: 65 },
 
     // Spain
     { id: 25, name: 'Rodri', position: 'CDM', nation: '🇪🇸', club: 'Manchester City', rating: 92, pace: 68, shooting: 72, passing: 92, dribbling: 84, defense: 91, physical: 85 },
     { id: 26, name: 'Pedri', position: 'CM', nation: '🇪🇸', club: 'Barcelona', rating: 91, pace: 78, shooting: 78, passing: 90, dribbling: 93, defense: 68, physical: 70 },
     { id: 27, name: 'Gavi', position: 'CM', nation: '🇪🇸', club: 'Barcelona', rating: 89, pace: 82, shooting: 76, passing: 86, dribbling: 88, defense: 76, physical: 76 },
     { id: 28, name: 'Alejandro Balde', position: 'LB', nation: '🇪🇸', club: 'Barcelona', rating: 84, pace: 96, shooting: 60, passing: 78, dribbling: 84, defense: 78, physical: 76 },
-    { id: 78, name: 'Pedro Porro', position: 'RB', nation: '🇪🇸', club: 'Tottenham', rating: 84, pace: 86, shooting: 76, passing: 82, dribbling: 82, defense: 78, physical: 74 },
-    { id: 79, name: 'Pau Cubarsí', position: 'CB', nation: '🇪🇸', club: 'Barcelona', rating: 82, pace: 72, shooting: 40, passing: 84, dribbling: 70, defense: 83, physical: 76 },
-    { id: 80, name: 'Marc Cucurella', position: 'LB', nation: '🇪🇸', club: 'Chelsea', rating: 84, pace: 82, shooting: 62, passing: 80, dribbling: 80, defense: 82, physical: 78 },
+    { id: 78, name: 'Unai Simón', position: 'GK', nation: '🇪🇸', club: 'Athletic Club', rating: 87, pace: 55, shooting: 20, passing: 72, dribbling: 58, defense: 30, physical: 78, diving: 88, handling: 87, kicking: 74, positioning: 90, reflexes: 89 },
+    { id: 79, name: 'Pedro Porro', position: 'RB', nation: '🇪🇸', club: 'Tottenham', rating: 84, pace: 86, shooting: 70, passing: 78, dribbling: 80, defense: 78, physical: 76 },
+    { id: 80, name: 'Cristian Romero', position: 'CB', nation: '🇦🇷', club: 'Tottenham', rating: 87, pace: 80, shooting: 62, passing: 72, dribbling: 74, defense: 90, physical: 86 },
+    { id: 81, name: 'Pau Cubarsí', position: 'CB', nation: '🇪🇸', club: 'Barcelona', rating: 86, pace: 78, shooting: 58, passing: 74, dribbling: 78, defense: 88, physical: 80 },
+    { id: 83, name: 'Enzo Fernández', position: 'CM', nation: '🇦🇷', club: 'Chelsea', rating: 86, pace: 75, shooting: 78, passing: 86, dribbling: 82, defense: 74, physical: 80 },
+    { id: 84, name: 'Lamine Yamal', position: 'CAM', nation: '🇪🇸', club: 'Barcelona', rating: 89, pace: 92, shooting: 84, passing: 84, dribbling: 92, defense: 42, physical: 72 },
+    { id: 85, name: 'Julián Álvarez', position: 'ST', nation: '🇦🇷', club: 'Atlético Madrid', rating: 88, pace: 84, shooting: 86, passing: 78, dribbling: 86, defense: 44, physical: 80 },
+    { id: 86, name: 'Nico Williams', position: 'LW', nation: '🇪🇸', club: 'Athletic Club', rating: 86, pace: 94, shooting: 82, passing: 78, dribbling: 88, defense: 40, physical: 76 },
 
     // Germany
     { id: 29, name: 'Jamal Musiala', position: 'CAM', nation: '🇩🇪', club: 'Bayern Munich', rating: 91, pace: 86, shooting: 84, passing: 86, dribbling: 94, defense: 52, physical: 72 },
@@ -127,7 +131,7 @@ const PLAYERS = [
     { id: 66, name: 'Victor Lindelöf', position: 'CB', nation: '🇸🇪', club: 'Manchester United', rating: 84, pace: 75, shooting: 54, passing: 78, dribbling: 72, defense: 85, physical: 80 },
 
     // Czech Republic
-    { id: 67, name: 'Patrik Schick', position: 'ST', nation: '🇨🇿', club: 'Bayer Leverkusen', rating: 81, pace: 82, shooting: 82, passing: 68, dribbling: 75, defense: 38, physical: 85 },
+    { id: 87, name: 'Patrik Schick', position: 'ST', nation: '🇨🇿', club: 'Bayer Leverkusen', rating: 81, pace: 82, shooting: 82, passing: 68, dribbling: 75, defense: 38, physical: 85 },
 
     // Australia
     { id: 68, name: 'Mathew Ryan', position: 'GK', nation: '🇦🇺', club: 'AZ', rating: 78, pace: 60, shooting: 20, passing: 70, dribbling: 55, defense: 25, physical: 78, diving: 82, handling: 80, kicking: 75, positioning: 80, reflexes: 82 },
@@ -158,9 +162,7 @@ const PLAYERS = [
 
     // Uzbekistan extra
     { id: 77, name: 'Abbosbek Fayzullaev', position: 'RW', nation: '🇺🇿', club: 'CSKA Moscow', rating: 78, pace: 84, shooting: 75, passing: 78, dribbling: 83, defense: 35, physical: 65 },
-
-    // Norway
-    { id: 82, name: 'Erling Haaland', position: 'ST', nation: '🇳🇴', club: 'Manchester City', rating: 91, pace: 89, shooting: 94, passing: 70, dribbling: 82, defense: 45, physical: 94 }
+    { id: 67, name: 'Paper', position: 'RW', nation: '🇺🇿', club: 'Random Team', rating: 99, pace: 99, shooting: 99, passing: 99, dribbling: 99, defense: 99, physical: 99 },
 ];
 
 // Formations
@@ -184,11 +186,11 @@ const FORMATIONS = {
         ]
     },
     '3-5-2': {
-        positions: ['GK', 'CB1', 'CB2', 'CB3', 'RWB', 'CM1', 'CM', 'CM2', 'LWB', 'ST', 'ST1'],
+        positions: ['GK', 'CB1', 'CB2', 'CB3', 'RWB', 'CM1', 'CM', 'CM', 'LWB', 'ST', 'ST1'],
         layout: [
             ['GK'],
             ['CB1', 'CB2', 'CB3'],
-            ['RWB', 'CM1', 'CM', 'CM2', 'LWB'],
+            ['RWB', 'CM1', 'CM', 'CM', 'LWB'],
             ['ST', 'ST1']
         ]
     },

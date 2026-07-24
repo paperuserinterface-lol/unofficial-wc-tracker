@@ -333,6 +333,110 @@ const MOMENTS = [
         }
     },
     {
+        id: 'mbappe-volley-2022',
+        year: 2022,
+        minute: "79'",
+        category: 'goal',
+        title: "Mbappé's Stunning Volley",
+        match: 'France vs Argentina · Final',
+        description: 'Kylian Mbappé meets a cut-back with an unstoppable first-time volley that rockets into the bottom corner, igniting France's dramatic comeback in the World Cup final.',
+        recreate: {
+            type: 'goal',
+            buildUp: [
+                { x: 0.22, y: 0.7 },
+                { x: 0.44, y: 0.65 },
+                { x: 0.62, y: 0.72 }
+            ],
+            shooterStart: { x: 0.65, y: 0.62 },
+            keeperPos: { x: 0.95, y: 0.48 },
+            defenders: [
+                { x: 0.5, y: 0.44 },
+                { x: 0.6, y: 0.36 }
+            ],
+            targetY: 0.65,
+            perfectTol: 0.05,
+            closeTol: 0.14,
+            keeperReach: 0.09
+        }
+    },
+    {
+        id: 'ronaldo-penalty-2022',
+        year: 2022,
+        minute: "4'",
+        category: 'goal',
+        title: "Ronaldo's Record-Breaking Penalty",
+        match: 'Portugal vs Ghana · Group Stage',
+        description: "Cristiano Ronaldo strokes home a penalty to become the first player to score in five different World Cups, a milestone goal for football's most decorated individual.",
+        recreate: {
+            type: 'goal',
+            buildUp: [
+                { x: 0.78, y: 0.5 }
+            ],
+            shooterStart: { x: 0.82, y: 0.5 },
+            keeperPos: { x: 0.97, y: 0.5 },
+            defenders: [],
+            targetY: 0.38,
+            perfectTol: 0.05,
+            closeTol: 0.14,
+            keeperReach: 0.07
+        }
+    },
+    {
+        id: 'kvaratskhelia-2022',
+        year: 2022,
+        minute: "88'",
+        category: 'goal',
+        title: "Kvaratskhelia's Solo Run",
+        match: 'Georgia vs Portugal · Group Stage',
+        description: "Khvicha Kvaratskhelia picks up the ball in his own half, beats three defenders with mesmerizing close control and finishes to give Georgia a historic World Cup win.",
+        recreate: {
+            type: 'goal',
+            buildUp: [
+                { x: 0.18, y: 0.58 },
+                { x: 0.35, y: 0.5 },
+                { x: 0.52, y: 0.46 },
+                { x: 0.66, y: 0.48 }
+            ],
+            shooterStart: { x: 0.68, y: 0.48 },
+            keeperPos: { x: 0.95, y: 0.5 },
+            defenders: [
+                { x: 0.3, y: 0.44 },
+                { x: 0.46, y: 0.56 },
+                { x: 0.6, y: 0.4 }
+            ],
+            targetY: 0.44,
+            perfectTol: 0.05,
+            closeTol: 0.14,
+            keeperReach: 0.09
+        }
+    },
+    {
+        id: 'scholes-1998',
+        year: 1998,
+        minute: "23'",
+        category: 'goal',
+        title: "Owen's Solo Screamer",
+        match: 'England vs Argentina · Round of 16',
+        description: "18-year-old Michael Owen latches onto a pass on the halfway line, burns past two defenders and drives low past the keeper in a burst that announces him to the world.",
+        recreate: {
+            type: 'goal',
+            buildUp: [
+                { x: 0.28, y: 0.5 },
+                { x: 0.42, y: 0.48 }
+            ],
+            shooterStart: { x: 0.44, y: 0.48 },
+            keeperPos: { x: 0.95, y: 0.52 },
+            defenders: [
+                { x: 0.52, y: 0.44 },
+                { x: 0.64, y: 0.48 }
+            ],
+            targetY: 0.42,
+            perfectTol: 0.05,
+            closeTol: 0.14,
+            keeperReach: 0.08
+        }
+    },
+    {
         id: 'banks-1970',
         year: 1970,
         minute: "10'",

@@ -1,24 +1,30 @@
 // Stats Page Logic
 // Top Scorers, Golden Glove race, and match records are computed live from
-// the tournament's real match data. Assists aren't provided by the live
-// feed, so that section is shown honestly as unavailable rather than
-// guessed. Team/Player of the Tournament are clearly-labeled editorial
-// picks (like the app's other curated content), not official awards.
+// the tournament's real match data. Assists are populated when the live feed
+// exposes them; otherwise the card shows the current status without guessing.
+// Team/Player of the Tournament are clearly-labeled editorial picks (like the
+// app's other curated content), not official awards.
 
 let statsTeams = [];
 let statsIntervalId = null;
+let playerPerformance = {};
 
 // Fan XI (4-3-3), editorial pick by rating using the existing player database.
-const TOTT_PLAYER_IDS = [2, 78, 22, 79, 80, 25, 10, 83, 1, 82, 18];
+const TOTT_PLAYER_IDS = [78, 79, 80, 81, 28, 26, 83, 84, 1, 85, 86];
 const POTT_PLAYER_ID = 1; // Lionel Messi — editorial pick
 
 function stripBidiControls(str) {
     return str.replace(/[\u200e\u200f\u202a-\u202e]/g, '');
 }
 
-function parseScorerEntries(raw) {
-    if (!raw || raw === 'null') return [];
-    const trimmed = raw.trim();
+function parseNameEntries(raw) {
+    if (!raw) return [];
+    if (Array.isArray(raw)) return raw.filter(Boolean);
+    if (raw === 'null') return [];
+
+    const trimmed = String(raw).trim();
+    if (!trimmed) return [];
+
     const inner = trimmed.replace(/^\{/, '').replace(/\}$/, '');
     if (!inner) return [];
 
@@ -35,6 +41,13 @@ function extractScorerName(entry) {
     return { name: stripBidiControls(rawName).trim(), isOwnGoal };
 }
 
+function normalizeName(value) {
+    return (value || '')
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}]+/gu, ' ')
+        .trim();
+}
+
 function getTeamInfo(teamId) {
     return statsTeams.find(t => t.id === teamId);
 }
@@ -47,7 +60,7 @@ function computeTopScorers(games) {
             { scorers: game.home_scorers, teamId: game.home_team_id },
             { scorers: game.away_scorers, teamId: game.away_team_id }
         ].forEach(({ scorers, teamId }) => {
-            parseScorerEntries(scorers).forEach(entry => {
+            parseNameEntries(scorers).forEach(entry => {
                 const { name, isOwnGoal } = extractScorerName(entry);
                 if (isOwnGoal || !name) return;
 
@@ -61,6 +74,70 @@ function computeTopScorers(games) {
     });
 
     return Object.values(tally).sort((a, b) => b.goals - a.goals);
+}
+
+function computePlayerPerformance(games) {
+    const tally = {};
+
+    games.forEach(game => {
+        [
+            { scorers: game.home_scorers, teamId: game.home_team_id },
+            { scorers: game.away_scorers, teamId: game.away_team_id }
+        ].forEach(({ scorers }) => {
+            parseNameEntries(scorers).forEach(entry => {
+                const { name, isOwnGoal } = extractScorerName(entry);
+                if (isOwnGoal || !name) return;
+
+                const key = normalizeName(name);
+                if (!tally[key]) {
+                    tally[key] = { name, goals: 0 };
+                }
+                tally[key].goals += 1;
+            });
+        });
+    });
+
+    return tally;
+}
+
+function computeTopAssists(games) {
+    const tally = {};
+
+    const collectEntries = (entries, teamId) => {
+        parseNameEntries(entries).forEach(entry => {
+            const trimmed = stripBidiControls(String(entry).trim());
+            if (!trimmed) return;
+
+            const key = `${teamId}::${trimmed}`;
+            if (!tally[key]) {
+                tally[key] = { name: trimmed, teamId, assists: 0 };
+            }
+            tally[key].assists += 1;
+        });
+    };
+
+    games.forEach(game => {
+        const assistFields = [
+            game.home_assists,
+            game.away_assists,
+            game.home_assist,
+            game.away_assist,
+            game.home_assisters,
+            game.away_assisters,
+            game.home_assistant,
+            game.away_assistant,
+            game.assists,
+            game.assist
+        ];
+
+        const hasAssistData = assistFields.some(value => value !== undefined && value !== null && value !== '' && value !== 'null');
+        if (!hasAssistData) return;
+
+        collectEntries(game.home_assists || game.home_assist || game.home_assisters || game.home_assistant, game.home_team_id);
+        collectEntries(game.away_assists || game.away_assist || game.away_assisters || game.away_assistant, game.away_team_id);
+    });
+
+    return Object.values(tally).sort((a, b) => b.assists - a.assists);
 }
 
 function computeGoldenGloveRace(games) {
@@ -157,13 +234,29 @@ function renderTopScorers(scorers) {
     }).join('');
 }
 
-function renderTopAssists() {
+function renderTopAssists(assists) {
     const container = document.getElementById('stats-top-assists');
     if (!container) return;
 
-    container.innerHTML = `
-        <p class="stats-empty">Assist data isn't provided by the live match feed yet.<br>Check back once it becomes available.</p>
-    `;
+    const top = (assists || []).slice(0, 10);
+    if (top.length === 0) {
+        container.innerHTML = `
+            <p class="stats-empty">Assist data isn't available from the live feed yet.<br>Check back once it becomes available.</p>
+        `;
+        return;
+    }
+
+    container.innerHTML = top.map((entry, index) => {
+        const team = getTeamInfo(entry.teamId);
+        return renderStatsRow({
+            rank: index + 1,
+            flag: team ? team.flag : '',
+            name: entry.name,
+            teamLabel: team ? team.name_en : 'Unknown',
+            value: `${entry.assists} ${entry.assists === 1 ? 'assist' : 'assists'}`,
+            isLeader: index === 0
+        });
+    }).join('');
 }
 
 function renderGoldenGlove(raceData) {
@@ -263,6 +356,15 @@ function renderPott() {
         return;
     }
 
+    const liveImpact = playerPerformance[normalizeName(player.name)] || { goals: 0 };
+    const keyStats = [
+        { label: 'Rating', value: player.rating },
+        { label: 'Pace', value: player.pace },
+        { label: 'Shooting', value: player.shooting },
+        { label: 'Passing', value: player.passing },
+        { label: 'Dribbling', value: player.dribbling }
+    ];
+
     container.innerHTML = `
         <div class="pott-spotlight">
             <div class="pott-rating">${player.rating}</div>
@@ -272,6 +374,28 @@ function renderPott() {
                 <p class="pott-blurb">Editorial pick for standout performances and match-winning impact across the tournament so far.</p>
             </div>
         </div>
+        <div class="pott-stats-grid">
+            <div class="pott-stat">
+                <span class="pott-stat-label">Live goals</span>
+                <span class="pott-stat-value">${liveImpact.goals}</span>
+            </div>
+            <div class="pott-stat">
+                <span class="pott-stat-label">Physical</span>
+                <span class="pott-stat-value">${player.physical}</span>
+            </div>
+            <div class="pott-stat">
+                <span class="pott-stat-label">Defense</span>
+                <span class="pott-stat-value">${player.defense}</span>
+            </div>
+        </div>
+        <div class="pott-stats-grid pott-stats-grid-secondary">
+            ${keyStats.map(stat => `
+                <div class="pott-stat pott-stat-secondary">
+                    <span class="pott-stat-label">${stat.label}</span>
+                    <span class="pott-stat-value">${stat.value}</span>
+                </div>
+            `).join('')}
+        </div>
     `;
 }
 
@@ -280,7 +404,8 @@ function renderStatsError() {
         const el = document.getElementById(id);
         if (el) el.innerHTML = '<p class="stats-empty">Unable to load live stats right now.</p>';
     });
-    renderTopAssists();
+    renderTopAssists([]);
+    renderPott();
 }
 
 // ---------- Data fetching ----------
@@ -296,11 +421,13 @@ async function fetchStatsData() {
 
         statsTeams = teamsData.teams || [];
         const games = gamesData.games || [];
+    playerPerformance = computePlayerPerformance(games);
 
         renderTopScorers(computeTopScorers(games));
-        renderTopAssists();
+        renderTopAssists(computeTopAssists(games));
         renderGoldenGlove(computeGoldenGloveRace(games));
         renderMatchRecords(computeMatchRecords(games));
+        renderPott();
     } catch (error) {
         console.error('Error fetching stats data:', error);
         renderStatsError();

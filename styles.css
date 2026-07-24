@@ -2010,6 +2010,8 @@ body {
 
 .pott-card {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .pott-spotlight {
@@ -2050,6 +2052,43 @@ body {
     line-height: 1.5;
 }
 
+.pott-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.pott-stats-grid-secondary {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.pott-stat {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.pott-stat-secondary {
+    padding: 0.7rem;
+}
+
+.pott-stat-label {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.pott-stat-value {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--primary-light);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .pitch-container {
@@ -2058,6 +2097,11 @@ body {
 
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+
+    .pott-stats-grid,
+    .pott-stats-grid-secondary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .stats-card-wide {
